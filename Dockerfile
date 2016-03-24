@@ -21,6 +21,7 @@ php5-mysql \
 php5-ldap \
 php5-gd \
 php-pear \
+locales\
 ca-certificates \
 build-essential \
 Dialog \
