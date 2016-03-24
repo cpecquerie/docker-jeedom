@@ -35,7 +35,8 @@ ntp \
 usb-modeswitch \
 python-serial \
 libc-dev \
-pkg-config
+pkg-config \
+php5-oauth
 
 ####################################################################SYSTEM#######################################################################################
 
@@ -51,8 +52,6 @@ RUN dpkg-reconfigure locales && \
     /usr/sbin/update-locale LANG=C.UTF-8
 
 ENV LC_ALL C.UTF-8
-
-#RUN pecl install oauth
 
 RUN apt-get autoremove
 
