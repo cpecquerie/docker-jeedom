@@ -36,7 +36,8 @@ usb-modeswitch \
 python-serial \
 libc-dev \
 pkg-config \
-php5-oauth
+php5-oauth \
+net-tools
 
 ####################################################################SYSTEM#######################################################################################
 
@@ -54,6 +55,7 @@ RUN dpkg-reconfigure locales && \
 ENV LC_ALL C.UTF-8
 
 RUN apt-get autoremove
+RUN apt-get clean
 
 ####################################################################NGINX#######################################################################################
 
@@ -74,6 +76,9 @@ RUN echo "extension=oauth.so" >> /etc/php5/fpm/php.ini
 ####################################################################JEEDOM#######################################################################################
 RUN echo "www-data ALL=(ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)
 RUN echo "* * * * * su --shell=/bin/bash - www-data -c '/usr/bin/php /var/www/html/core/php/jeeCron.php' >> /dev/null" | crontab -
+
+####################################################################SYSTEM CLEAN#################################################################################
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD bashrc /root/.bashrc
 ADD init.sh /root/init.sh

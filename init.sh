@@ -28,6 +28,9 @@ chown -R www-data:www-data /var/www/html
 echo 'Launch cron'
 service cron start
 
+echo 'Launch php-fpm'
+service php-fpm start
+
 echo 'Launch nginx'
 service nginx start
 
