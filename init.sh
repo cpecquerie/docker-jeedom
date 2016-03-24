@@ -29,7 +29,7 @@ echo 'Launch cron'
 service cron start
 
 echo 'Launch php-fpm'
-service php-fpm start
+service php5-fpm start
 
 echo 'Launch nginx'
 service nginx start
