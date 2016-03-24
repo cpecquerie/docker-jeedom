@@ -37,7 +37,10 @@ python-serial \
 libc-dev \
 pkg-config \
 php5-oauth \
-net-tools
+net-tools \
+ow-shell \
+nodejs \
+npm
 
 ####################################################################SYSTEM#######################################################################################
 
@@ -85,10 +88,7 @@ ADD init.sh /root/init.sh
 RUN chmod +x /root/init.sh
 CMD ["/root/init.sh"]
 
-EXPOSE 22 80 162 1886 4025 17100 10000 
+EXPOSE 22 80 1886  
 
-#17100 : zibasdom
-#10000 : orvibo
 #1886 : MQTT
-#162 : SNMP
-#4025 : DSC
+
