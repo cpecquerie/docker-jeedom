@@ -81,6 +81,7 @@ RUN echo "www-data ALL=(ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)
 RUN echo "* * * * * su --shell=/bin/bash - www-data -c '/usr/bin/php /var/www/html/core/php/jeeCron.php' >> /dev/null" | crontab -
 
 COPY jeedom /etc/init.d/jeedom
+RUN chmod 755 /etc/init.d/jeedom
 ####################################################################SYSTEM CLEAN#################################################################################
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
