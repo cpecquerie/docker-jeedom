@@ -80,6 +80,7 @@ RUN echo "extension=oauth.so" >> /etc/php5/fpm/php.ini
 RUN echo "www-data ALL=(ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)
 RUN echo "* * * * * su --shell=/bin/bash - www-data -c '/usr/bin/php /var/www/html/core/php/jeeCron.php' >> /dev/null" | crontab -
 
+COPY jeedom /etc/init.d/jeedom
 ####################################################################SYSTEM CLEAN#################################################################################
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

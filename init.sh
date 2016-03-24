@@ -34,5 +34,8 @@ service php5-fpm start
 echo 'Launch nginx'
 service nginx start
 
+echo 'Launch Jeedom'
+service jeedom start
+
 /usr/bin/supervisord
 
