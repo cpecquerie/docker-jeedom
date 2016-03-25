@@ -5,6 +5,7 @@ MAINTAINER edouard@kleinhans.info
 ENV SHELL_ROOT_PASSWORD jeedom
 
 RUN apt-get update && apt-get install -y \
+build-essential \
 wget \
 unzip \
 curl \
@@ -13,32 +14,26 @@ supervisor \
 cron \
 mysql-client \
 nginx-light \
-php5-fpm \
+php5-cli \
+php5-common \
 php5-curl \
 php5-dev \
+php5-fpm \
 php5-json \
 php5-mysql \
-php5-ldap \
-php5-gd \
 php-pear \
+php5-oauth \
+net-tools \
 locales \
 ca-certificates \
-build-essential \
 Dialog \
 sudo \
 make \
-mc \
-vim \
 htop \
 nano \
 ntp \
 usb-modeswitch \
 python-serial \
-libc-dev \
-pkg-config \
-php5-oauth \
-net-tools \
-rsyslog \
 ow-shell 
 
 ####################################################################SYSTEM#######################################################################################
@@ -83,9 +78,14 @@ RUN echo "* * * * * su --shell=/bin/bash - www-data -c '/usr/bin/php /var/www/ht
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD bashrc /root/.bashrc
-ADD init.sh /root/init.sh
-RUN chmod +x /root/init.sh
-CMD ["/root/init.sh"]
+
+COPY docker-entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+WORKDIR /var/www/html/jeedom
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/usr/bin/supervisord"]
 
 EXPOSE 22 80 1886  
 
