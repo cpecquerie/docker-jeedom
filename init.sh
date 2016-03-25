@@ -25,6 +25,9 @@ chmod 777 /dev/tty*
 chmod 755 -R /var/www/html
 chown -R www-data:www-data /var/www/html
 
+echo 'Launch rsyslog'
+service rsyslog start
+
 echo 'Launch cron'
 service cron start
 
