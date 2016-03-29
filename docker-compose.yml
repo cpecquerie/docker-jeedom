@@ -1,0 +1,35 @@
+jeedom-web:
+  labels:
+    io.rancher.container.hostname_override: container_name
+  image: edouardkleinhans/jeedom
+    - JEEDOM_DB_NAME=jeedom
+    - JEEDOM_DB_USER=jeedom
+    - JEEDOM_DB_PASSWORD=jeedom
+  volumes_from:
+    - jeedom-data-volume
+  links:
+    - jeedom-database:mysql
+
+jeedom-database:
+  labels:
+    io.rancher.container.hostname_override: container_name
+  image: mariadb
+  environment:
+    - MYSQL_ROOT_PASSWORD=password
+    - MYSQL_DATABASE=jeedom
+    - MYSQL_USER=jeedom
+    - MYSQL_PASSWORD=jeedom
+  volumes_from:
+    - jeedom-data-volume
+
+## Do not change below. Could cause data loss in upgrade.
+jeedom-data-volume:
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: 'true'
+  image: busybox
+  net: none
+  command: /bin/true
+  volumes:
+    - /var/www/html
+    - /var/lib/mysql
