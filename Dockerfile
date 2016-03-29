@@ -71,6 +71,8 @@ ADD bashrc /root/.bashrc
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+WORKDIR /var/www/html/jeedom
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/usr/bin/supervisord"]
 
