@@ -47,6 +47,7 @@ else
 	cp -R /root/core-*/* /var/www/html/
 	cp -R /root/core-*/.htaccess /var/www/html/
     
+    cp /var/www/html/core/config/common.config.sample.php /var/www/html/core/config/common.config.php
     # on modifie le contenu avec les paramètres fixés lors de la configuration de l'utilisateur mysql dédié (cf. "Bases de données mysql")
     #sed -i "s/#PASSWORD#/${JEEDOM_DB_PASSWORD}/g" /tmp/create_jeedom_db.sql
 
