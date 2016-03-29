@@ -28,6 +28,7 @@ sudo \
 make \
 htop \
 nano \
+ntp \
 usb-modeswitch \
 python-serial \
 ow-shell 
