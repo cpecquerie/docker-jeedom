@@ -55,7 +55,7 @@ else
 	    value="$2"
 	    php_escaped_value="$(php -r 'var_export($argv[1]);' "$value")"
 	    sed_escaped_value="$(echo "$php_escaped_value" | sed 's/[\/&]/\\&/g')"
-	    sed -ri "s/((['\"])$key\2\s*=>\s*)(['\"]).*\3/\1$sed_escaped_value/" ./core/config/common.config.php
+	    sed -ri "s/((['\"])$key\2\s*=>\s*)(['\"]).*\3/\1$sed_escaped_value/" /var/www/html/core/config/common.config.php
     }
 
     set_config 'host' "$JEEDOM_DB_HOST"

@@ -43,9 +43,6 @@ RUN dpkg-reconfigure locales && \
 
 ENV LC_ALL C.UTF-8
 
-RUN apt-get autoremove
-RUN apt-get clean
-
 ####################################################################NGINX#######################################################################################
 
 COPY nginx_default /etc/nginx/sites-available/default
