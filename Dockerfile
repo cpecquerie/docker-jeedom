@@ -9,7 +9,6 @@ build-essential \
 wget \
 unzip \
 curl \
-openssh-server \
 supervisor \
 cron \
 mysql-client \
@@ -31,7 +30,6 @@ sudo \
 make \
 htop \
 nano \
-ntp \
 usb-modeswitch \
 python-serial \
 ow-shell 
@@ -85,7 +83,7 @@ RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/usr/bin/supervisord"]
 
-EXPOSE 22 80 1886  
+EXPOSE 80 
 
-#1886 : MQTT
+
 
