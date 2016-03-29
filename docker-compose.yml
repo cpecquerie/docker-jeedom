@@ -1,7 +1,7 @@
 jeedom-web:
   labels:
     io.rancher.container.hostname_override: container_name
-  image: edouardkleinhans/jeedom
+  image: edouardkleinhans/docker-jeedom
     - JEEDOM_DB_NAME=jeedom
     - JEEDOM_DB_USER=jeedom
     - JEEDOM_DB_PASSWORD=jeedom
