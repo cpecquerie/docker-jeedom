@@ -10,7 +10,9 @@ jeedom-web:
     - jeedom-data-volume
   links:
     - jeedom-database:mysql
-
+  ports:
+    - 9080:80
+    
 jeedom-database:
   labels:
     io.rancher.container.hostname_override: container_name
