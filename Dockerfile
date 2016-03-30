@@ -31,7 +31,9 @@ nano \
 ntp \
 usb-modeswitch \
 python-serial \
-ow-shell 
+ow-shell \
+&& apt-get clean \  
+&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ####################################################################SYSTEM#######################################################################################
 
@@ -47,25 +49,25 @@ ENV LC_ALL C.UTF-8
 ####################################################################NGINX#######################################################################################
 
 COPY nginx_default /etc/nginx/sites-available/default
-RUN touch /etc/nginx/sites-available/jeedom_dynamic_rule && chmod 777 /etc/nginx/sites-available/jeedom_dynamic_rule
-
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+RUN touch /etc/nginx/sites-available/jeedom_dynamic_rule && \
+    chmod 777 /etc/nginx/sites-available/jeedom_dynamic_rule && \ 
+    echo "daemon off;" >> /etc/nginx/nginx.conf
 
 ####################################################################PHP#########################################################################################
 
-RUN sed -i "s/max_execution_time = 30/max_execution_time = 600/g" /etc/php5/fpm/php.ini
-RUN sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 1G/g" /etc/php5/fpm/php.ini
-RUN sed -i "s/post_max_size = 8M/post_max_size = 1G/g" /etc/php5/fpm/php.ini
-RUN sed -i "s/expose_php = On/expose_php = Off/g" /etc/php5/fpm/php.ini
-RUN sed -i "s/pm.max_children = 5/pm.max_children = 20/g" /etc/php5/fpm/pool.d/www.conf
-RUN echo "extension=oauth.so" >> /etc/php5/fpm/php.ini
+RUN sed -i "s/max_execution_time = 30/max_execution_time = 600/g" /etc/php5/fpm/php.ini && \
+    sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 1G/g" /etc/php5/fpm/php.ini && \
+    sed -i "s/post_max_size = 8M/post_max_size = 1G/g" /etc/php5/fpm/php.ini && \
+    sed -i "s/expose_php = On/expose_php = Off/g" /etc/php5/fpm/php.ini && \
+    sed -i "s/pm.max_children = 5/pm.max_children = 20/g" /etc/php5/fpm/pool.d/www.conf && \
+    echo "extension=oauth.so" >> /etc/php5/fpm/php.ini
 
 ####################################################################JEEDOM#######################################################################################
-RUN echo "www-data ALL=(ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)
-RUN echo "* * * * * su --shell=/bin/bash - www-data -c '/usr/bin/php /var/www/html/core/php/jeeCron.php' >> /dev/null" | crontab -
+
+RUN echo "www-data ALL=(ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo) && \
+    echo "* * * * * su --shell=/bin/bash - www-data -c '/usr/bin/php /var/www/html/core/php/jeeCron.php' >> /dev/null" | crontab -
 
 ####################################################################SYSTEM CLEAN#################################################################################
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD bashrc /root/.bashrc
 
