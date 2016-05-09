@@ -62,7 +62,7 @@ libruby2.1 \
 libyaml-0-2 \
 ruby \
 ruby2.1 \
-rubygems-integration
+rubygems-integration \
 && apt-get clean \  
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
