@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+apt-get update && apt-get dist-upgrade
+
 if [ -n "$MYSQL_PORT_3306_TCP" ]; then
 	if [ -z "$JEEDOM_DB_HOST" ]; then
 		JEEDOM_DB_HOST='mysql'

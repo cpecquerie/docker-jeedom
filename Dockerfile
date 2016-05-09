@@ -32,6 +32,37 @@ ntp \
 usb-modeswitch \
 python-serial \
 ow-shell \
+php5-ssh2 \
+apt-utils \
+dh-python \
+gir1.2-glib-2.0 \
+iso-codes \
+libapt-inst1.5 \  
+libdbus-glib-1-2 \
+libgirepository-1.0-1 \
+libmpdec2 \
+libpython3-stdlib \
+libpython3.4-minimal \
+libpython3.4-stdlib \
+lsb-release \
+python-apt-common \
+python3 \
+python3-apt \
+python3-dbus \
+python3-gi \
+python3-minimal \
+python3-software-properties \
+python3.4 \
+python3.4-minimal \
+software-properties-common \
+unattended-upgrades \
+javascript-common \
+libjs-jquery \
+libruby2.1 \
+libyaml-0-2 \
+ruby \
+ruby2.1 \
+rubygems-integration
 && apt-get clean \  
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
