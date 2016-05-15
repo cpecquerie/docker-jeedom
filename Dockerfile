@@ -18,6 +18,8 @@ php5-dev \
 php5-fpm \
 php5-json \
 php5-mysql \
+php5-gd \
+php5-ssh2 \ 
 php-pear \
 php5-oauth \
 net-tools \
