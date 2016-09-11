@@ -5,6 +5,7 @@ MAINTAINER edouard@kleinhans.info
 RUN apt-get update && apt-get install -y \
 build-essential \
 wget \
+git \
 unzip \
 curl \
 supervisor \
