@@ -10,8 +10,7 @@ jeedom-web:
     - jeedom-data-volume
   links:
     - jeedom-database:mysql
-  ports:
-    - 9080:80
+  net : host
     
 jeedom-database:
   labels:
